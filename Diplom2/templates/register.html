@@ -7,12 +7,19 @@
 </head>
 <body>
     <h1>Регистрация нового пользователя</h1>
+    Дата рождения вводится в формате: ГГГГ-ММ-ДД
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Зарегистрироваться</button>
     </form>
+<br><br>
+    <footer>
+        {% block basement %}
+        <button><a href="http://127.0.0.1:8000">Вернуться на главную страницу</a></button>
+        {% endblock %}
+    </footer>
 
 </body>
 </html>

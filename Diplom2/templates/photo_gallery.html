@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Галерея фотографий</title>
+</head>
+<body>
+    <h1>Галерея фотографий</h1>
+    <a href="{% url 'upload_photo' %}">Загрузить фотографию</a>
+    <div>
+        {% for photo in photos %}
+            <div>
+                <a href="{% url 'photo_detail' photo.id %}">
+                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}" width="200">
+                </a>
+                <p>{{ photo.title }}</p>
+            </div>
+        {% empty %}
+            <p>Фотографий пока нет.</p>
+        {% endfor %}
+    </div>
+<br><br>
+    <footer>
+        {% block basement %}
+        <button><a href="http://127.0.0.1:8000">Вернуться на главную страницу</a></button>
+        {% endblock %}
+    </footer>
+</body>
+</html>

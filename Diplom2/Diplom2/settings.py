@@ -25,6 +25,9 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'task_dip.CustomUser'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',

@@ -1,6 +1,7 @@
 from django import forms
 from .models import CustomUser
 from django.core.exceptions import ValidationError
+from .models import Photo, Comment
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, required=True, label="Пароль")
@@ -32,3 +33,22 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ['image', 'title', 'description']
+        labels = {
+            'image': 'Изображение',
+            'title': 'Название',
+            'description': 'Описание',
+        }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        labels = {
+            'content': 'Комментарий',
+        }
